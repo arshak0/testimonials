@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>TST2</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    
+</head>
+<style>
+    @font-face{font-family:'Glyphicons Halflings';
+    src:url(https://www.clickfunnels.com/fonts/glyphicons-halflings-regular.eot);
+    src:url(https://www.clickfunnels.com/fonts/glyphicons-halflings-regular.eot?#iefix) format("embedded-opentype"),url(https://www.clickfunnels.com/fonts/glyphicons-halflings-regular.woff) format("woff"),url(https://www.clickfunnels.com/fonts/glyphicons-halflings-regular.ttf) format("truetype"),url(https://www.clickfunnels.com/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format("svg")}
+
+.tst2_reviews_block {
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+}
+.tst2_rating_block {
+    display:flex;
+}
+.tst2_rating_block_left_stars button.btn-warning {
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+.btn-sm {
+    padding: 10px 15px;
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+}
+.glyphicon-star:before {
+    content: "\e006";
+}
+.glyphicon {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+button.btn.btn-warning.btn-sm.fifth_star {
+    border-right-color: #ccc;
+    border-right-width: 13px;
+    width: 9px;
+}
+p.tst2_customer_reviews {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 56px;
+    color: #000000;
+}
+.tst2_rating_block_left {
+    font-family: Roboto;
+    font-size: 25px;
+    width: 50%;
+    margin-left: 30px;
+}
+p.tst2_rating_block_left_2 {
+    font-weight: 700;
+    font-size: 40px;
+    font-family: Arial;
+    margin-top: -15px;
+    margin-bottom: 25px;
+}
+span.tst2_rating_block_left_2_span {
+    font-weight: normal;
+    color: #999;
+    font-size: 65%;
+}
+.tst2_rating_block {
+    background-color: #fafafa;
+    border: 1px solid #efefef;
+    padding: 15px 15px 20px 15px;
+    border-radius: 3px;
+}
+
+.tst2_rating_block_right {
+    width: 50%;
+}
+p.tst2_rating_breakdown {
+    font-family: Roboto;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+.pull-left {
+    float: left;
+    font-family: Roboto;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
+}
+.progress-bar-success {
+    background-color: #5cb85c;
+}
+.progress-bar {
+    -webkit-transition: width .25s ease,height .25s ease,font-size .25s ease;
+    -moz-transition: width .25s ease,height .25s ease,font-size .25s ease;
+    -ms-transition: width .25s ease,height .25s ease,font-size .25s ease;
+    -o-transition: width .25s ease,height .25s ease,font-size .25s ease;
+    transition: width .25s ease,height .25s ease,font-size .25s ease;
+}
+.progress-bar {
+    float: left;
+    width: 0;
+    height: 100%;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    /*background-color: #428bca;*/
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+    -webkit-transition: width .6s ease;
+    transition: width .6s ease;
+}
+.progress {
+    overflow: hidden;
+    height: 20px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+}
+.pull-right {
+    float: left;
+}
+p.rating_number {
+    margin-top: 0.5px;
+    margin-right: 8px;
+    font-size: 20px;
+}
+p.tst2_review_title {
+    font-family: Roboto;
+    text-align: center;
+    margin-right: auto;
+    font-size: 30px;
+    font-weight: bold;
+}
+p.tst2_review_name {
+    font-family: Roboto;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 40px;
+}
+img.tst2_review_image {
+    transform: translateX(-50%);
+    margin-left: 50%;
+    border-radius: 500px;
+    width: 80px;
+    height: 80px;
+}
+p.tst2_review_text {
+    padding-left: 3%;
+    padding-right: 3%;
+    font-family: Roboto;
+    margin-top: 40px;
+}
+img.tst2_review_bottom_rating {
+    height: 20px;
+    width: 157px;
+}
+.tst2_review_bottom_rating_div {
+    display: flex;
+    margin-left: 3%;
+    flex-direction: column-reverse;
+}
+p.tst2_review_helpful {
+    color: #75787a;
+    font-size: 17px;
+    font-family: Roboto;
+}
+.tst2_review_bottom_right {
+    margin-left: 4%;
+}
+.tst2_review_horizontal_line {
+    margin-top: 50px;
+    margin-left: 3%;
+    width: 96%;
+}
+button.tst2_review_button_1 {
+    width: 125px;
+    height: 30px;
+    font-family: Roboto;
+    font-size: 16px;
+    background-color: #f0f1f3;
+    border-radius: 3px;
+    background: linear-gradient(to bottom,#f7f8fa,#e7e9ec);
+    border: 1.5px solid #bcbdc2;
+}
+button.tst2_review_button_2 {
+    height: 18px;
+    margin-top: 6px;
+    padding-top: 0px;
+    margin-left: 15px;
+    background-color: white;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    border-left: solid;
+    border-left-width: 1px;
+    border-left-color: #D3D3D3;
+    color: #75787a;
+    font-family: Roboto;
+    font-size: 14px;
+}
+button.tst2_review_button_3 {
+    height: 18px;
+    margin-top: 6px;
+    padding-top: 0px;
+    margin-left: 5px;
+    background-color: white;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    border-left: solid;
+    border-left-width: 1px;
+    border-left-color: #D3D3D3;
+    color: #75787a;
+    font-family: Roboto;
+    font-size: 14px;
+}
+hr.tst2_hr {
+    color: #D3D3D3;
+    height: 0px;
+    border-color: #D3D3D3;
+    border: solid;
+    border-width: 0.5px;
+}
+.tst2_review {
+    margin-top: 60px;
+}
+
+svg.tst2_svg_left {
+    width: 15px;
+    margin-left: 55px;
+    height: 30px;
+    margin-right: 55px;
+    color: green;
+}
+
+svg.tst2_svg_right {
+    width: 15px;
+    padding-left: 45px;
+    margin-left: 5px;
+    margin-right: 55px;
+    color: green;
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    border-left: solid;
+    border-left-width: 1px;
+    border-left-color: #D3D3D3;
+    height: 18px;
+    margin-top: 6px;
+}
+
+@media screen and (min-width: 768px) {
+    p.tst2_review_text {
+        font-size: 21px;
+    }
+}
+@media screen and (max-width: 767px) {
+    p.tst2_review_text {
+        font-size: 18px;
+    }
+}
+
+svg.spinner {
+    width: 15px;
+    margin-left: 32px;
+    margin-right: 26.5px;
+    height: 18px;
+
+    animation: spin 2s linear infinite;
+}
+
+.svg_spinner_div {
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    border-left: solid;
+    border-left-width: 1px;
+    border-left-color: #D3D3D3;
+    margin-left: 15px;
+    height: 18px;
+    margin-top: 6px;
+}
+
+@keyframes animate {
+  0% {transform:rotate(-45deg)}
+  50%{transform:rotate(-135deg)}
+  100%{transform:rotate(-225deg)}
+}
+
+@-moz-keyframes spin{0%{-moz-transform:rotate(0)}100%{-moz-transform:rotate(359deg)}}
+@-webkit-keyframes spin{0%{-webkit-transform:rotate(0)}100%{-webkit-transform:rotate(359deg)}}
+@-o-keyframes spin{0%{-o-transform:rotate(0)}100%{-o-transform:rotate(359deg)}}
+@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(359deg)}}
+
+.tst2_control_div {
+    margin-top: 50px;
+}
+
+button.tst2_control_see_more {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    color: #999;
+    width: 100%;
+    max-width: 768px;
+    padding: 15px;
+    border-radius: 5px;
+    background: linear-gradient(0deg,#e8e8e8 0,#fdfdfd 100%);
+    border: 1px solid #d7d7d7;
+    outline: 0;
+    font-size: 16px;
+    font-family: Verdana;
+}
+
+svg.tst2_controlsvg {
+    margin-right: 5px;
+    height: 18px;
+    margin-top: 1px;
+    vertical-align: middle;
+}
+
+.tst2_control_div {
+    margin-top: 50px;
+}
+
+button.tst2_control_see_more {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    color: #999;
+    width: 100%;
+    max-width: 768px;
+    padding: 15px;
+    border-radius: 5px;
+    background: linear-gradient(0deg,#e8e8e8 0,#fdfdfd 100%);
+    border: 1px solid #d7d7d7;
+    outline: 0;
+    font-size: 16px;
+    font-family: Verdana;
+    margin-left: auto;
+    margin-right:auto;
+}
+
+nav.tst2_control_nav {
+    margin-top: 20px;
+    display: flex;
+    justify-content: start;
+    height: 50px;
+    color: #999;
+    padding-top: 0px;
+    font-size: 16px;
+    font-family: Verdana;
+    margin-bottom: 100px;
+}
+
+ul.tst2_control_ul {
+    margin-left: auto;
+    margin-right:auto;
+    list-style: none;
+    border: 1px solid #d7d7d7;
+    display: flex;
+    border-radius: 5px;
+    margin-top: 0px;
+    height: 50px;
+    padding-left: 0px;
+    margin-bottom: 0px;
+    padding-right: 0px;
+}
+
+li.tst2_control_li_previous {
+    padding: 12px 16px;
+    font-size: 18px;
+    color: #5f6368;
+    border-right: 1px solid #d7d7d7;
+}
+
+li.tst2_control_li {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 19px;
+    padding-right: 5px;
+    font-size: 18px;
+    width: 27px;
+    color: #5f6368;
+    border-right: 1px solid #d7d7d7;
+}
+
+li.tst2_control_li_next {
+    padding: 12px 16px;
+    font-size: 18px;
+    color: #5f6368;
+}
+
+li.tst2_control_li.active {
+    background-color: #f0f0f0;
+    border-color: #ddd!important;
+}
+
+li.tst2_control_li_previous.active {
+    background-color: #f0f0f0;
+    border-color: #ddd!important;
+}
+
+li.tst2_control_li_next.active {
+    background-color: #f0f0f0;
+    border-color: #ddd!important;
+}
+
+</style>
+
+<body></body>
+
+
+
+
+<script>
+const roboto_add='<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic" rel="stylesheet">';
+document.head.insertAdjacentHTML("beforeEnd",roboto_add);//Adding the Roboto font to site
+
+const test_html=`<div class="tst2_reviews_block">
+        <div class="tst2_reviews_top">
+            <p class="tst2_customer_reviews">Customer Reviews:</p>
+            <div class="tst2_rating_block">
+                <div class="tst2_rating_block_left">
+                    <p class="tst2_rating_block_left_1">Average user rating</p>
+                    <p class="tst2_rating_block_left_2">4.7 <span class="tst2_rating_block_left_2_span">/ 5</span></p>
+                    <div class="tst2_rating_block_left_stars">
+                        <button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-star" style="color: rgb(242, 242, 242);"></span></button>
+                        <button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-star" style="color: rgb(242, 242, 242);"></span></button>
+                        <button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-star" style="color: rgb(242, 242, 242);"></span></button>
+                        <button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-star" style="color: rgb(242, 242, 242);"></span></button>
+                        <button type="button" class="btn btn-warning btn-sm fifth_star"><span class="glyphicon glyphicon-star" style="color: rgb(242, 242, 242);"></span></button>
+                    </div>
+
+                </div>               
+                <div class="tst2_rating_block_right">
+                    <p class="tst2_rating_breakdown">Rating breakdown</p>
+                    <div class="pull-left">
+                        <div class="pull-left" style="width:35px; line-height:1;">
+                            <div style="height:9px; margin:5px 0;margin-top: 4px;display: flex;"><p class="rating_number">5</p> <span class="glyphicon glyphicon-star" style="color: rgb(51, 51, 51);"></span>
+
+                            </div>
+                        </div>
+                        <div class="pull-left" style="width:250px;margin-left: 7px;">
+                            <div class="progress" style="height:11px; margin:8px 0;">
+                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 65%">
+                                    <span class="sr-only">65% Complete (danger)</span></div>
+                            </div>
+                        </div>
+                        <div class="pull-right" style="margin-left:10px;font-size: 20px;">19</div>
+                    </div>
+                    <div class="pull-left">
+                        <div class="pull-left" style="width:35px; line-height:1;">
+                            <div style="height:9px; margin:5px 0;margin-top: 4px;display: flex;"><p class="rating_number">4</p> <span class="glyphicon glyphicon-star" style="color: rgb(51, 51, 51);"></span>
+
+                            </div>
+                        </div>
+
+                        <div class="pull-left" style="width:250px;margin-left: 7px;">
+                            <div class="progress" style="height:11px; margin:8px 0;">
+                                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 35%;background-color: #428bca">
+                                    <span class="sr-only">35% Complete (danger)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pull-right" style="margin-left:10px;font-size: 20px;">3</div>
+                    </div>
+                    <div class="pull-left">
+                        <div class="pull-left" style="width:35px; line-height:1;">
+                            <div style="height:9px; margin:5px 0;margin-top: 4px;display: flex;"><p class="rating_number">3</p> <span class="glyphicon glyphicon-star" style="color: rgb(51, 51, 51);"></span>
+                            </div>
+                        </div>
+                        <div class="pull-left" style="width:250px;margin-left: 7px;">
+                            <div class="progress" style="height:11px; margin:8px 0;">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 2%;background-color: #5bc0de;"><span class="sr-only">0% Complete (danger)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pull-right" style="margin-left:10px;font-size: 20px;">0</div>
+                    </div>
+                    <div class="pull-left">
+                        <div class="pull-left" style="width:35px; line-height:1;">
+                            <div style="height:9px; margin:5px 0;margin-top: 4px;display: flex;"><p class="rating_number">2</p> <span class="glyphicon glyphicon-star" style="color: rgb(51, 51, 51);"></span>
+                            </div>
+                        </div>
+                        <div class="pull-left" style="width:250px;margin-left: 7px;">
+                            <div class="progress" style="height:11px; margin:8px 0;">
+                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 2%;background-color: #f0ad4e;"><span class="sr-only">0% Complete (danger)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right" style="margin-left:10px;font-size: 20px;">0</div>
+                    </div>
+                    <div class="pull-left">
+                        <div class="pull-left" style="width:35px; line-height:1;">
+                            <div style="height:9px; margin:5px 0;margin-top: 4px;display: flex;"><p class="rating_number">1</p> <span class="glyphicon glyphicon-star" style="color: rgb(51, 51, 51);"></span>
+                            </div>
+                        </div>
+                        <div class="pull-left" style="width:250px;margin-left: 7px;">
+                            <div class="progress" style="height:11px; margin:8px 0;">
+                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 2%;background-color: #d9534f;"><span class="sr-only">0% Complete (danger)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pull-right" style="margin-left:10px;font-size: 20px;">1</div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="tst2_reviews_bottom"></div>
+        
+
+
+    </div>`;
+
+//document.getElementsByClassName('CompleteFooter_component__jMHJy')[0].insertAdjacentHTML("AfterBegin",test_html);
+document.body.insertAdjacentHTML("AfterBegin",test_html);//Filling the all HTML code to the page
+
+//The HTML of one review
+const review_text=`<div class="tst2_review">
+                <p class="tst2_review_title">"Its amazing the results we had"</p>
+                <p class="tst2_review_name">Lynn Hungerford</p>
+                <img class="tst2_review_image" src="https://dev.insightwhale.com/telestoventures/TST2/tst2_images/review_1.jpg">
+                <p class="tst2_review_text">My dad is 82 and has had dementia for some time now but got to where he was like a small child having to be told and showed everything to do. he couldnt turn on the microwave or even know who i was some days. it broke my heart to see him going away so fast. i had watched a video about this product and knew i had to try anything if it would only help alittle it would be worth it.we had tried other products but with very little results. after one week on this and i give him one pill 4 times a day i saw him coming back alittle each day. one morning my mom said do you see the life back in is face and yes i knew my dad was back. hes still not back a hundred percent and i know he nevr will be but its amazing the results we had and i will continue to give him these. we also changed up his diet to consume less aluminum in foods and medicines he was taking. i also give him 4 silicia drops a day n his water to help excrete the aluminum.i think all of these changes combined has given us these results but yes i recommend this if your family member is slipping away.</p>
+                <div class="tst2_review_bottom" style="display:flex;">
+                    <div class="tst2_review_bottom_rating_div">
+                        <img class="tst2_review_bottom_rating" src="https://dev.insightwhale.com/telestoventures/TST2/tst2_images/5starrating.png">
+                    </div>
+                    <div class="tst2_review_bottom_right">
+                        <p class="tst2_review_helpful"><span class="tst2_review_helpful count">1025</span> people found this helpful</p>
+                        <div class="tst2_review_bottom_buttons" style="display:flex">
+                            <button class="tst2_review_button_1">Helpful</button>
+                            <button class="tst2_review_button_2">Comment</button>
+                            <button class="tst2_review_button_3">Report Abuse</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="tst2_review_horizontal_line"><hr class="tst2_hr"></div>
+            </div>`;
+//-The HTML of one review
+
+var review_count=[1025, 836, 834, 560, 546, 539, 536, 506, 500, 388, 387, 372, 348, 347, 341, 340, 336, 297, 296, 282, 282, 263, 243, 238, 237, 197, 133, 130, 130, 110, 106, 85, 42, 42, 38, 38, 37, 37, 36, 26, 25, 19, 18, 16, 15, 15, 15, 12, 11, 11, 0, 0, 0];
+var review_names=['Lynn Hungerford', 'Betty Snyder', 'Cynthia B', 'Ralph Thurston', 'Richard Schulz', 'Bette Schmidt', 'Frank Agamemnon', 'Tim Cassidy', 'Vera Bensen', 'Jeff B', 'Denise Gallagher', 'Mary Avalos', 'Tami Shoemate', 'Joan Koester', 'Don Edwards', 'Anne Hardy', 'Dayna Herbert', 'Dori H', 'Janet Newman', 'Brenda Branson', 'Kathy H.','Rita','Mary E. Snyder'];
+var review_titles=['Its amazing the results we had', "It's made a big difference in my memory", 'Renewed interest in daily activities', ' \'The clear mind formula\' is exactly what I experienced', 'Happy with the results', 'Noticeable difference in memory', "I didn't think it would work!", 'Great product', 'Worked so well', 'Seems to be working', 'Too soon', 'WOW !! what a miracle', 'Wow!', 'Seems to be working', 'Big help!', 'I give it 5 stars', 'I really love this stuff', 'Keep me more calmly focused and organized', 'You might want to try it yourself', 'It works', 'Great product','I tracked every single day for 14 days to see any results!','I didn\'t think it would work!'];
+var review_texts=["My dad is 82 and has had dementia for some time now but got to where he was like a small child having to be told and showed everything to do. he couldnt turn on the microwave or even know who i was some days. it broke my heart to see him going away so fast. i had watched a video about this product and knew i had to try anything if it would only help alittle it would be worth it.we had tried other products but with very little results. after one week on this and i give him one pill 4 times a day i saw him coming back alittle each day. one morning my mom said do you see the life back in is face and yes i knew my dad was back. hes still not back a hundred percent and i know he nevr will be but its amazing the results we had and i will continue to give him these. we also changed up his diet to consume less aluminum in foods and medicines he was taking. i also give him 4 silicia drops a day n his water to help excrete the aluminum.i think all of these changes combined has given us these results but yes i recommend this if your family member is slipping away.", "I bought this for a friend who is 80 and was having memory problems and it really helped. As soon as he stopped taking it I could see a difference. That's when I decided to start try it myself. It's been three months now and it's made a big difference in my memory and ability to focus. I'm remembering names and details of things that were hard to think of before. I can sit and do crossword puzzle a lot easier as well! For me, this one is a keeper. It's definitely a supplement I take no matter what. I can tell the difference if I miss it!", "We have found Youthful Brain very effective. Almost immediately after I have my 89-year old father Youthful Brain, he has become a new person. Almost overnight he remembers things, is much more alert and has a renewed interest in daily activities. I just wanted to tell you. Thanks!", "Recently my father passed, he was 93. But the last 5 years he was slow to answer. My mom is 92 and has problems remembering what day it is, when she last talked to me and other short term items. I could feel that I was not able to remember as much as I used to. After 10 days, I don't feel myself not remembering. My brain doesn't sound like a symphony of white noise. I feel at peace being able to use my brain quickly and accurately. Your motto, \"the clear mind formula\" is exactly what I experienced. Thanks.", "At first I wasn't sure I noticed a difference, but I continued taking it. After a few weeks I really started to notice a difference with rememering things much easier so I've been happy with the results and will continue taking it.", "I've been taking Youthful Brain for several months now. There is a noticeable difference in memory and logic as well as many fewer 'glitches'.", "Ordered some a week ago can't wait to try it out. LET YOU KNOW IN 3 MONTHS (is all I'm willing to give a change / TRY out things).", "This made a huge difference…i was experiencing mood swings, having trouble sleeping at night, and kept getting tired in the afternoon. I didn't have high expectations, but it has worked so well. I have way more energy now and i'm sleeping like a baby.", "I think it has helped a little, but I feel like I have to take it longer to really know. But I do remember a few little things like where I have put items, but I still have problems remembering places and people's names.", "There may have been some small benefit from this herbal supplement, but I didn't notice it a ton.", "I bought a bottle of this. Hoping it will keep my brain in fine condition.", "WOW !! what a miracle", "Dad is taking Youthful Brain..looks to be working well. Have to take for 2-3 mos. He is also taking lions mane. day by day...", "So many natural herbs and supplements out there that can make us better if we just do the research", "I've been using this for years. I can remember names, numbers, addresses, anythiing. Now, where did I put my glasses?", "I have felt less brain fog and also my focus has improved while taking this product, I give it 5 stars.", "I really love this stuff. I've been using it for 2 weeks, but already I can tell my memory has improved. I'll report back again, when I've been on it longer.", "So far, I noticed it does keep me more calmly focused and organized. I am getting more things accomplished in less time. I take care of Alzheimer's patients, and see where their frustration, and the frustration it causes their families contributes to the decline. This is worth looking at!", "I am using it and have noticed a change. You might want to try it yourself.", "My family member is having a problem and I got this for them to use and I pray that it works. Only been taking it a short while so don't know yet.....", "Nothing is working for us. This may be a great product but even doctors are struggling to help.","I started using this supplement a little over 2 weeks. I have noticed significant changes through out the past week. First week I didn't feel anything. 2nd week I started noticing my span of focus increasing.<br>I work long hours on my own business, so I have been very interested in optimizing my focus and my attention in the best way and healthiest way. I track my hours on daily basis, so it was really easy for me to track changes. sometimes its very hard to track, but I journal every single day so I pay attention to the slightest detail and I document them.<br>I just have been doing this for the longest time, because it was really the only way I can quantify what supplements do. So for example taking all the crap from Vitamin supplements didn't make me feel any better, but eating certain super fruits did within 2 weeks. I also have arthritis so for me its important to track progress or placebo if you well.<br>I have noticed, sharper focuses towards the ends of days for me. Usually I'm so focused and determined to finish a task or a project in one day, but this soon dilute half way thru the day.<br>I noticed also a consistent surge of energy and no crash towards the end. I didn't feel like I have to stay up after a long day of work, I was tired enough to close my eyes and sleep.<br>I have taken the pills once a day for the past 14 days. I'm okay to keep going with them. I also notices some changes when I modified my diet, but again I track so much data so that I can quantify what results. As you can see this is an expensive supplement, and I wanted to know if it was worth it for me, while I think its highly expensive, I will be using it probably every other day or every 3 days to pro long the bottle. It was definitely worth the test and the efforts for me.","I bought this for a friend who is 80 and was having memory problems and it really helped.<br>As soon as he stopped taking it I could see a difference. That's when I decided to start try it myself. It's been three months now and it's made a big difference in my memory and ability to focus. I'm remembering names and details of things that were hard to think of before. I can sit and do crossword puzzle a lot easier as well!<br>For me, this one is a keeper. It's definitely a supplement I take no matter what. I can tell the difference if I miss it!"];
+var review_images=['https://myvitalitynow.net/youthful-brain/presentation/assets/images/20.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/54.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/58.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/70.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/71.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/65.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/61.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/73.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/69.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/18.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/62.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/63.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/66.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/67.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/68.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/72.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/74.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/59.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/60.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/64.jpg', 'https://myvitalitynow.net/youthful-brain/presentation/assets/images/19.jpg','https://images-na.ssl-images-amazon.com/images/S/amazon-avatars-global/cbd61efe-8b1b-42c4-82b2-872c54e5991b._CR0,0,500,500_SX48_.jpg','https://images-na.ssl-images-amazon.com/images/S/amazon-avatars/default._CR0,0,1024,1024_SX48_.png'];
+
+var svg_html_left='<svg class="tst2_svg_left" focusable="false" data-prefix="fas" data-icon="check" class="checked" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>';
+var svg_html_right='<svg class="tst2_svg_right" focusable="false" data-prefix="fas" data-icon="check" class="checked" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>';
+var svg_html_center='<div class="svg_spinner_div">  <svg class="spinner" viewBox="0 0 4335 4335"> <path fill="#0033ff" d="M3346 1077c41,0 75,34 75,75 0,41 -34,75 -75,75 -41,0 -75,-34 -75,-75 0,-41 34,-75 75,-75zm-1198 -824c193,0 349,156 349,349 0,193 -156,349 -349,349 -193,0 -349,-156 -349,-349 0,-193 156,-349 349,-349zm-1116 546c151,0 274,123 274,274 0,151 -123,274 -274,274 -151,0 -274,-123 -274,-274 0,-151 123,-274 274,-274zm-500 1189c134,0 243,109 243,243 0,134 -109,243 -243,243 -134,0 -243,-109 -243,-243 0,-134 109,-243 243,-243zm500 1223c121,0 218,98 218,218 0,121 -98,218 -218,218 -121,0 -218,-98 -218,-218 0,-121 98,-218 218,-218zm1116 434c110,0 200,89 200,200 0,110 -89,200 -200,200 -110,0 -200,-89 -200,-200 0,-110 89,-200 200,-200zm1145 -434c81,0 147,66 147,147 0,81 -66,147 -147,147 -81,0 -147,-66 -147,-147 0,-81 66,-147 147,-147zm459 -1098c65,0 119,53 119,119 0,65 -53,119 -119,119 -65,0 -119,-53 -119,-119 0,-65 53,-119 119,-119z"></path> </svg></div>';
+
+//Filling all reviews to site
+for (i=0;i<23;i++) {
+    jQuery(".tst2_reviews_bottom").append(review_text);
+    jQuery(".tst2_review")[i].id=`tst2_review_${i}`;
+}
+for (i=0;i<23;i++) {
+    jQuery(".tst2_review_helpful.count").eq(i).text(review_count[i]);
+    jQuery('.tst2_review_name').eq(i).text(review_names[i]);
+    jQuery('.tst2_review_title').eq(i).text('"'+review_titles[i]+'"');
+    jQuery('.tst2_review_text').eq(i).html(review_texts[i]);
+    jQuery('.tst2_review_image').eq(i).attr('src',review_images[i]);
+}
+//-End of filling all reviews to site
+
+//Code of 3 buttons in the review
+jQuery('.tst2_review_button_1').click(function () {
+    jQuery(this).parent().children().eq(0).hide();
+    jQuery(this).parent().prepend(svg_html_left);
+})
+
+jQuery('.tst2_review_button_3').click(function () {
+    jQuery(this).parent().children().last().hide();
+    jQuery(this).parent().append(svg_html_right);
+})
+
+jQuery('.tst2_review_button_2').click(function () {
+    jQuery(this).hide();
+    jQuery(this).replaceWith(svg_html_center);
+})
+//The end of 3 buttons in the review
+
+jQuery(".tst2_review_horizontal_line").last().remove();//Removing the last horizontal line
+
+var control_div_html='<div class="tst2_control_div">   <button class="tst2_control_see_more">        <svg class="tst2_controlsvg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sync-alt" class="svg-inline--fa fa-sync-alt fa-w-16" role="img" xmlns="https://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M370.72 133.28C339.458 104.008 298.888 87.962 255.848 88c-77.458.068-144.328 53.178-162.791 126.85-1.344 5.363-6.122 9.15-11.651 9.15H24.103c-7.498 0-13.194-6.807-11.807-14.176C33.933 94.924 134.813 8 256 8c66.448 0 126.791 26.136 171.315 68.685L463.03 40.97C478.149 25.851 504 36.559 504 57.941V192c0 13.255-10.745 24-24 24H345.941c-21.382 0-32.09-25.851-16.971-40.971l41.75-41.749zM32 296h134.059c21.382 0 32.09 25.851 16.971 40.971l-41.75 41.75c31.262 29.273 71.835 45.319 114.876 45.28 77.418-.07 144.315-53.144 162.787-126.849 1.344-5.363 6.122-9.15 11.651-9.15h57.304c7.498 0 13.194 6.807 11.807 14.176C478.067 417.076 377.187 504 256 504c-66.448 0-126.791-26.136-171.315-68.685L48.97 471.03C33.851 486.149 8 475.441 8 454.059V320c0-13.255 10.745-24 24-24z"></path></svg>      SEE MORE REVIEWS    </button><nav class="tst2_control_nav" aria-label="tst">     <ul class="tst2_control_ul">         <li class="tst2_control_li_previous">Previous</li>   <li class="tst2_control_li active">1</li>   <li class="tst2_control_li">2</li>   <li class="tst2_control_li">3</li>    <li class="tst2_control_li_next">Next</li>   </ul>     </nav>     </div>';
+
+jQuery('.tst2_reviews_bottom').after(control_div_html);//Adding the review control HTML part
+
+//Reviews Control
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+//Reviews Control
+
+//The function for showing reviews from a to b
+function display_reviews(a,b) {
+    if ( b>jQuery(".tst2_review").last().index() ) { b=jQuery(".tst2_review").last().index()+1; }
+    for (i=0;i<a;i++) { jQuery(".tst2_review").eq(i).hide();   }
+    for (i=a;i<b;i++) { jQuery(".tst2_review").eq(i).show();   }
+    for (i=b;i<23;i++) {jQuery(".tst2_review").eq(i).hide();    }
+    if ( b>jQuery(".tst2_review").last().index() ) { rev_arr=[a,b-1]; }
+    else { rev_arr=[a,b]; }
+}
+
+
+//Initial hiding
+display_reviews(0,10);
+var rev_arr=[0,10];
+
+//Clicking the "See more reviews" button
+jQuery(".tst2_control_see_more").click (function () {
+    if (rev_arr[1]!=jQuery(".tst2_review").last().index()) { rev_arr[1]=rev_arr[1]+10; display_reviews(rev_arr[0],rev_arr[1]);}
+    
+});
+
+jQuery(".tst2_control_li_previous").click (function () {
+    var cur_index=-1;
+
+    jQuery('.tst2_control_li').each(function () {
+        if( jQuery(this).hasClass('active') ) {  cur_index=parseInt(jQuery(this).text());}
+    });
+
+    if (cur_index!=1) {
+        cur_index=cur_index-1;
+        jQuery('.tst2_control_li').eq(cur_index-1).toggleClass('active');
+        jQuery('.tst2_control_li').eq(cur_index).toggleClass('active');
+    }
+
+});
+
+jQuery(".tst2_control_li_next").click (function () {
+    var cur_index=-1;
+
+    jQuery('.tst2_control_li').each(function () {
+        if( jQuery(this).hasClass('active') ) {  cur_index=parseInt(jQuery(this).text());}
+    });
+    if (cur_index!=jQuery('.tst2_control_li').last().index()) {
+        cur_index=cur_index+1;
+        jQuery('.tst2_control_li').eq(cur_index-1).toggleClass('active');
+        jQuery('.tst2_control_li').eq(cur_index-2).toggleClass('active');
+    }    
+});
+
+jQuery(".tst2_control_li").click (function () {
+    jQuery(this).toggleClass('active');
+    var cur_index=jQuery(this).index();
+
+    jQuery(".tst2_control_li").each (function () {
+        if(jQuery(this).index()!=cur_index) { jQuery(this).removeClass('active');  }
+    })
+
+    display_reviews(   parseInt(jQuery(this).text() )*10-10   , parseInt(jQuery(this).text() )*10     );
+
+    $('html').animate({ scrollTop: jQuery('.tst2_reviews_bottom')[0].offsetTop}, 600   );
+
+});
+
+jQuery(".tst2_control_li_previous").click (function () {
+    rev_arr_prev=[   rev_arr[0],rev_arr[1]   ];
+    if(  rev_arr[0]==0  ) {rev_arr_rev=rev_arr_prev;}
+    else {rev_arr_prev=[rev_arr_prev[0]-10,rev_arr_prev[0]];}
+    display_reviews(   rev_arr_prev[0]   , rev_arr_prev[1]     );
+    $('html').animate({ scrollTop: jQuery('.tst2_reviews_bottom')[0].offsetTop}, 600   );
+});
+
+jQuery(".tst2_control_li_next").click (function () {
+    rev_arr_prev=[   rev_arr[0],rev_arr[1]   ];
+    if (      rev_arr_prev[0]!=(jQuery(".tst2_review").last().index() - jQuery(".tst2_review").last().index()%10)     ) {
+        rev_arr_prev=[rev_arr_prev[0]+10,rev_arr_prev[1]+10];
+        display_reviews(   rev_arr_prev[0]   , rev_arr_prev[1]     );
+        $('html').animate({ scrollTop: jQuery('.tst2_reviews_bottom')[0].offsetTop}, 600   );
+    }
+});
+//----
+
+
+
+//For Checking
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+
+//$('.tst2_review').css('margin-top','0px');
+//$('.tst2_reviews_bottom').css('height','200px');
+//$('.tst2_review').each(function () {
+//$(this).html($(this).index());
+//});
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+
+</script>
+</html>
